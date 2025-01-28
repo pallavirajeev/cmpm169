@@ -1,33 +1,41 @@
 h1, h2 {
   margin: 0;
   padding: 0;
-  /* font-size: 1.2em; */
   font-weight: lighter;
+  font-family: 'Coiny', sans-serif;
+  color: #3C6E47;
 }
 
 #content {
   width: calc(100% - 30px);
-  margin: 10px;080;
+  margin: 10px;
   padding: 10px;
-  border: solid 1px #808;
-  font-family: sans-serif;
+  border: solid 2px #89C996;
+  border-radius: 12px;
+  background-color: #F0FAF4;
+  /* font-family: 'Coiny', sans-serif; */
 }
 
 .minor-section {
   margin: 10px;
-  padding: 10px;
-  border: solid 1px #A0A0A0;
-  border-radius: 10px;
+  padding: 15px;
+  border: solid 2px #A0D8A0;
+  border-radius: 15px;
+  background-color: #EAF8E6;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .minor-section h2 {
-  font-size: 1.2em;
+  font-size: 1.4em;
+  color: #3C6E47;
 }
 
 /* Set the image to be responsive */
 .image-wrapper img {
   max-width: 100%;
   height: auto;
+  border-radius: 10px;
+  border: solid 2px #A0D8A0;
 }
 
 /* Set the canvas element to be the full size of the container */
@@ -43,7 +51,17 @@ canvas {
 }
 
 .fullscreen-box button {
-  font-size: 0.6em;
+  font-size: 0.8em;
+  background-color: #3C6E47;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.fullscreen-box button:hover {
+  background-color: #2B4C34;
 }
 
 body.is-fullscreen #canvas-container {
