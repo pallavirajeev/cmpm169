@@ -1,49 +1,106 @@
-// sketch.js - purpose and description here
-// Author: Your Name
-// Date:
+// sketch.js - Interactive 3D Jellyfish Animation
+// Author: [Your Name]
+// Date: [Current Date]
 
-// Here is how you might set up an OOP p5.js project
-// Note that p5.js looks for a file called sketch.js
-
-// Constants - User-servicable parts
-// In a longer project I like to put these in a separate file
-const VALUE1 = 1;
-const VALUE2 = 2;
+// Constants
+const NUM_JELLYFISH = 5;
+const TANK_WIDTH = 200;
+const TANK_HEIGHT = 400;
+const TANK_DEPTH = 200;
 
 // Globals
-let myInstance;
+let jellyfishList = [];
 let canvasContainer;
-var centerHorz, centerVert;
+let centerHorz, centerVert;
 
-class MyClass {
-    constructor(param1, param2) {
-        this.property1 = param1;
-        this.property2 = param2;
-    }
+class Jellyfish {
+  constructor(x, y, z) {
+    this.baseX = x;
+    this.baseY = y;
+    this.baseZ = z;
+    this.numTentacles = 8;
+    this.floatSpeed = random(0.01, 0.03);
+    this.floatHeight = random(5, 15);
+    this.tentacleOffsets = Array.from({ length: this.numTentacles }, () => random(1000));
+  }
 
-    myMethod() {
-        // code to run when method is called
+  update() {
+    this.x = this.baseX + sin(frameCount * 0.01) * 5;
+    this.y = this.baseY + sin(frameCount * this.floatSpeed) * this.floatHeight;
+    this.z = this.baseZ + cos(frameCount * 0.01) * 5;
+  }
+
+  display() {
+    push();
+    translate(this.x, this.y, this.z);
+    scale(0.5);
+
+    // Draw body
+    fill(255, 182, 193, 240);
+    noStroke();
+    ellipsoid(30, 20);
+    
+    // Draw tentacles
+    for (let i = 0; i < this.numTentacles; i++) {
+      push();
+      
+      let angle = TWO_PI / this.numTentacles * i;
+      let xOffset = cos(angle) * 15;
+      let zOffset = sin(angle) * 15;
+      let baseX = xOffset;
+      let baseY = 10;
+      let baseZ = zOffset;
+      
+      stroke(255, 182, 193, 180);
+      strokeWeight(2);
+      noFill();
+      
+      beginShape();
+      vertex(baseX, baseY, baseZ);
+      
+      let noiseOffset = this.tentacleOffsets[i];
+      let sway1 = sin(frameCount * 0.05 + noiseOffset) * 10;
+      let sway2 = cos(frameCount * 0.03 + noiseOffset) * 10;
+      
+      bezierVertex(
+        baseX + sway1, baseY + 30, baseZ + sway2,
+        baseX - sway2, baseY + 60, baseZ - sway1,
+        baseX + sway1, baseY + 90, baseZ + sway2
+      );
+      
+      bezierVertex(
+        baseX - sway1, baseY + 120, baseZ - sway2,
+        baseX + sway2, baseY + 150, baseZ + sway1,
+        baseX, baseY + 160, baseZ
+      );
+      
+      endShape();
+      pop();
     }
+    
+    pop();
+  }
 }
 
 function resizeScreen() {
-  centerHorz = canvasContainer.width() / 2; // Adjusted for drawing logic
-  centerVert = canvasContainer.height() / 2; // Adjusted for drawing logic
+  centerHorz = canvasContainer.width() / 2;
+  centerVert = canvasContainer.height() / 2;
   console.log("Resizing...");
   resizeCanvas(canvasContainer.width(), canvasContainer.height());
-  // redrawCanvas(); // Redraw everything based on new size
 }
 
-// setup() function is called once when the program starts
 function setup() {
-  // place our canvas, making it fit our container
   canvasContainer = $("#canvas-container");
-  let canvas = createCanvas(canvasContainer.width(), canvasContainer.height());
+  let canvas = createCanvas(600, 600, WEBGL);  // Fixed canvas size of 600x600
   canvas.parent("canvas-container");
-  // resize canvas is the page is resized
 
-  // create an instance of the class
-  myInstance = new MyClass("VALUE1", "VALUE2");
+  // Create jellyfish with original position ranges
+  for (let i = 0; i < NUM_JELLYFISH; i++) {
+    let x = random(-80, 80);
+    let y = random(-100, 100);
+    let z = random(-70, 70);
+    jellyfishList.push(new Jellyfish(x, y, z));
+  }
 
   $(window).resize(function() {
     resizeScreen();
@@ -51,29 +108,31 @@ function setup() {
   resizeScreen();
 }
 
-// draw() function is called repeatedly, it's the main animation loop
 function draw() {
-  background(220);    
-  // call a method on the instance
-  myInstance.myMethod();
+  background(0);
+  orbitControl();
 
-  // Set up rotation for the rectangle
-  push(); // Save the current drawing context
-  translate(centerHorz, centerVert); // Move the origin to the rectangle's center
-  rotate(frameCount / 100.0); // Rotate by frameCount to animate the rotation
-  fill(234, 31, 81);
+  // Draw tank with original dimensions
+  noFill();
+  stroke(255);
+  strokeWeight(3);
+  box(TANK_WIDTH, TANK_HEIGHT, TANK_DEPTH);
+
+  // Update and draw jellyfish
+  for (let jellyfish of jellyfishList) {
+    jellyfish.update();
+    jellyfish.display();
+  }
+
+  // Draw water
+  push();
+  fill(0, 100, 255, 70);
   noStroke();
-  rect(-125, -125, 250, 250); // Draw the rectangle centered on the new origin
-  pop(); // Restore the original drawing context
-
-  // The text is not affected by the translate and rotate
-  fill(255);
-  textStyle(BOLD);
-  textSize(140);
-  text("p5*", centerHorz - 105, centerVert + 40);
+  translate(0, 5, 0);
+  box(TANK_WIDTH, TANK_HEIGHT - 10, TANK_DEPTH);
+  pop();
 }
 
-// mousePressed() function is called once after every time a mouse button is pressed
 function mousePressed() {
-    // code to run when mouse is pressed
+  // Add interaction if desired
 }
