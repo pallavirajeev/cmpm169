@@ -2,7 +2,7 @@
 <html>
 <head>
 	<!-- This title is used for tabs and bookmarks -->
-	<title>Experiment X - Subject/Topic</title>
+	<title>Experiment 7 - Data Viualization & Networks</title>
 
 	<!-- Use UTF character set, a good idea with any webpage -->
 	<meta charset="UTF-8" />
@@ -32,30 +32,34 @@
 	<main id="content">
 		<section>
 
-			<h1>Experiment X - Subject/Topic</h1>
+			<h1>Experiment 7 - Data Viualization & Networks</h1>
 
 			<div class="minor-section">
 				<div id="canvas-container">
 					<!-- canvas will be added here -->
 				</div>
-                <div class="fullscreen-box">
+                <!-- <div class="fullscreen-box">
                     <button id="fullscreen">Fullscreen</button>
-                </div>
+                </div> -->
 			</div>
 
 			<div class="minor-section">
 				<h2>Description</h2>
-				<p>What are you trying to acomplish with this experiment?</p>
+				<p>An interactive global surveillance visualization that highlights cities with varying levels of camera surveillance. The map has an eerie aesthetic with a dark background and color-coded indicators to represent surveillance intensity, yellow for light, orange for medium, and red for heavy. Users can explore this surveillance landscape by zooming in on specific regions, panning across the world, and interacting with country and city markers to reveal additional information. Users can click on white country markers to keep the hover over label present or hover over the colorful circles to get a popup of information. The visualization also categorizes locations as "SAFE ZONE," "WATCH OUT," or "NO ESCAPE" based on camera density.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Technical</h2>
-				<p>Describe in detail what you did technically and how it works?</p>
+				<p>The visualization is built using p5.js and features a “map” that implements custom coordinate mapping functions. Geographic coordinates are converted to screen positions and a dynamic zoom system maintains appropriate element scaling. There are interactive elements such as hoverable city and country markers that display contextual information through custom popup components. The code uses mouse interactions (hover, click, drag, wheel) to enable users to mess around with the environment and explore the information provided from the data visualization. </p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Reflection</h2>
-				<p>Each person that worked on the code should reflect on the process, the difficulties, and the successes of the experiment.</p>
+				<p>For this experiment, I worked alone. Creating this piece had some ups and downs until I got the data into my project and then customizing went pretty smoothly. I did spend some time trying to find an example for what I wanted to create but decided to go with an example of a similar “vibe” that I wanted to recreate with my piece instead because there was nothing that really caught my eye otherwise. This allowed me to really use my creativity. 
+					I think the lows of the project was figuring out how to plot the data itself. The dataset I was using did not have the latitude or longitude of the cities, but that was crucial in plotting my citing in my makeshift map. This meant I had to manually get those values and put them into my code to be able to use. Luckily I had the help of ChatGPT to speed up the process, but it would be much easier if I could read those values in from the csv file I had access to from kaggle. 
+					I had some good highs for the project. I was able to get into a flow after integrating the data and had some fun with the customization aspect. I liked being able to mess around with the look of the piece and coming up with the colors and creative hidden labels marking the different levels of camera density. I also had a good time easily integrating this code into my website and making the piece work well with the webpage. 
+				Overall, I am super happy with the end outcome of this project. I like how the piece allows users to explore the map and visualize the densities of cctv cameras in various cities around the world. 
+				</p>
 			</div>
 
 		</section>
