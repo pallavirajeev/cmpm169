@@ -1,70 +1,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- This title is used for tabs and bookmarks -->
-	<title>Experiment 8 - Machine Learning</title>
+    <!-- Title for the tab -->
+    <title>Experiment 8 - Machine Learning</title>
 
-	<!-- Use UTF character set, a good idea with any webpage -->
-	<meta charset="UTF-8" />
-	<!-- Set viewport so page remains consistently scaled w narrow devices -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Use UTF character set, a good idea with any webpage -->
+    <meta charset="UTF-8" />
+    <!-- Set viewport for consistent scaling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<!-- Include CSS file, including a site-wide CSS and for this particular page -->
-	<link rel="stylesheet" type="text/css" href="../css/site.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- Include site-wide and page-specific CSS files -->
+    <link rel="stylesheet" type="text/css" href="../css/site.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
-	<!-- Load jQuery library -->
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    <!-- Load jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
         crossorigin="anonymous"></script>
-	<!-- Load p5.js library -->
-	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
+    
+    <!-- Load p5.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
 
-	<!-- Link to javascript files - DEFER waits until all elements are rendered -->
+    <!-- Load ml5.js library -->
+    <script src="https://unpkg.com/ml5@1/dist/ml5.js"></script>
+
+    <!-- JavaScript files (deferring their load until after the content is rendered) -->
     <script type="text/javascript" src="../js/site.js" DEFER></script>
-	<!-- Use me for a JavaScript OOP Project -->
-	<script type="text/javascript" src="./js/project.js" DEFER></script>
-	<!-- Use me for a p5.js project -->
-	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
+    <script type="text/javascript" src="./js/project.js" DEFER></script>
+    <script type="text/javascript" src="./js/sketch.js" DEFER></script>
 </head>
 <body>
-	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
-	<main id="content">
-		<section>
+    <main id="content">
+        <section>
+            <!-- Title -->
+            <h1>Experiment 8 - Machine Learning</h1>
 
-			<h1>Experiment 8 - Machine Learning</h1>
-
+            <!-- Canvas Container (if needed for visual output) -->
 			<div class="minor-section">
-				<div id="canvas-container">
-					<!-- canvas will be added here -->
+				<div class="mood-section">
+					<!-- Mood Input Section -->
+					<div id="input-container">
+						<input type="text" id="mood-input" placeholder="Describe your mood (e.g., happy, calm, anxious)">
+						<button id="submit-btn">Submit</button>
+					</div>
+					
+					<!-- Sentiment Result -->
+					<div id="result"></div>
+			
+					<!-- Canvas Section -->
+					<div id="canvas-container">
+						<!-- p5.js canvas will be added dynamically here -->
+					</div>
 				</div>
-                <!-- <div class="fullscreen-box">
-                    <button id="fullscreen">Fullscreen</button>
-                </div> -->
 			</div>
+			
 
-			<div class="minor-section">
-				<h2>Description</h2>
-				<p></p>
-			</div>
 
-			<div class="minor-section">
-				<h2>Technical</h2>
-				<p></p>
-			</div>
+            <!-- Description Section -->
+            <div class="minor-section">
+                <h2>Description</h2>
+                <p>An interactive mood analysis that lets users input their mood and get a colored representation of their mood. The mood is analyzed in real time using the pre-trained ml5.js sentiment model. The mood input is visually represented through an evolving color, making it both informative and engaging for the user. 
+				</p>
+            </div>
 
-			<div class="minor-section">
-				<h2>Reflection</h2>
-				<p></p>
-			</div>
+            <!-- Technical Details Section -->
+            <div class="minor-section">
+                <h2>Technical</h2>
+                <p>The project uses p5.js and machine learning to analyze user-inputted mood descriptions. The sentiment is processed using ml5.js for real-time analysis, and the result is displayed along with a color-coded feedback system. The sentiment analysis is processed in real-time when the user clicks the submit button. The sentiment level is then displayed as a numerical value and color-coded based on the detected emotional tone. </p>
+            </div>
 
-		</section>
-		<nav id="links" class="minor-section">
-			<!-- Put link back to homepage here. -->
+            <!-- Reflection Section -->
+            <div class="minor-section">
+                <h2>Reflection</h2>
+                <p>For this experiment, I worked alone. The creation of this piece went pretty smoothly except there was quite a bit of a learning curve. I have never used machine learning with my experiments or before for anything else so I had a slow start with figuring out how to navigate ml5.js. However, the ideation process was pretty quick for me because I knew what I wanted to try and recreate some sort of mood generator that had colors based on the mood of the user. 
+					The lows of the project would be integrating my code into my portfolio. I spent so much time working with the code to get it to display sort of like how it displays on my p5.js editor. I had some trouble because the styling was connected to the rest of the elements on the website and I needed to rearrange some things to only stylize the mood part of the code with the pink styling I used on p5.js. 
+					For the project highs, I would say getting the example code integrated with my code and to do what I was hoping to do. I had really low expectations for this experiment because I have never worked with machine learning concepts and this was all new to me. I was scared to mess up or not be able to get my code working. Therefore, seeing my code work was a great high for the experiment. 	
+				Overall, I am happy with the end outcome of this project. I like that I was able to integrate the sentiment model and turn it into a color generator based on moods, when it was originally used to determine if movie reviews were positive or negative. 
+				</p>
+            </div>
+
+        </section>
+
+        <!-- Navigation Links -->
+        <nav id="links" class="minor-section">
             <ul>
                 <li><a href="../index.html">Home</a></li>
             </ul>
-		</nav>
-	</main>
+        </nav>
+    </main>
+
+    <!-- Linking the JavaScript for the mood color generator -->
+    <script src="sketch.js"></script>
 </body>
 </html>

@@ -1,19 +1,96 @@
-/* style.css */
-
-/* Set the canvas element to be the full size of the container */
-canvas {
+/* Mood Section Styling */
+.mood-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left */
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 600px; /* Restricting width of the mood section */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px; /* Increased padding for more space */
+    background: #fffaf0; /* Light pastel background */
+    border-radius: 12px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    height: 80%; /* Take up 80% of the container height */
+  }
+  
+  /* Input Container Styling */
+  #input-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  /* Mood Input Field */
+  #mood-input {
+    width: 70%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ffb6c1; /* Soft pink border */
+    border-radius: 20px;
+    outline: none;
+    background-color: #fffaf0; /* Light pastel shade */
+    text-align: center;
+    transition: 0.3s ease-in-out;
+  }
+  
+  /* Focus State for Mood Input */
+  #mood-input:focus {
+    border-color: #ff69b4; /* Brighter pink border when focused */
+  }
+  
+  /* Submit Button Styling */
+  #submit-btn {
+    padding: 12px 25px;
+    font-size: 16px;
+    background-color: #ff99cc; /* Soft pink */
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Hover Effect for Submit Button */
+  #submit-btn:hover {
+    background-color: #ff66b2; /* Brighter pink on hover */
+    transform: scale(1.05); /* Slightly enlarge the button */
+  }
+  
+  /* Result Text Container - Sentiment Level */
+  #result {
+    margin-top: 20px; /* Space between input and result */
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff69b4; /* Pink text */
+    height: 25px;
+    text-align: center; /* Centering the sentiment text */
+    text-shadow: 1px 1px 2px rgba(255, 105, 180, 0.3);
+    width: 100%; /* Full width for the sentiment display */
+    margin-bottom: 20px; /* Space below the result */
+  }
+  
+  /* Canvas Section Styling */
+  #canvas-container {
+    width: 100%;
+    height: 250px; /* Adjusted height for the canvas */
+    margin-top: 30px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+  }
+  
+  canvas {
+    display: block;
+    position: relative; /* Ensures canvas is properly positioned */
     width: 100%;
     height: 100%;
-}
-
-/* Center the canvas element on the page */
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#canvas-container {
-    width: 100%;
-    height: 600px;
-}
+  }
+  
